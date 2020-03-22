@@ -1,5 +1,5 @@
 # MVC Framework
- MVC structure with friendly url.
+MVC Framework with bootstrap, jquery and friendly url.
 
 ## How to use
 
@@ -76,6 +76,21 @@ mvc
 
 		const titulo = 'MVC';
 		public $menuItems = array('Home','Sobre','Contato','Example');
+```
+
+8. Change path to your project name
+```
+NAME_OF_YOUR_FOLDER
+│
+|	Application.php
+
+
+<?php
+	
+	define('INCLUDE_PATH','http://localhost/NAME_OF_YOUR_FOLDER/');
+	define('INCLUDE_PATH_FULL','http://localhost/NAME_OF_YOUR_FOLDER/Views/pages/');
+
+
 ```
 
 ## How to collaborate
