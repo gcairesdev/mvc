@@ -124,7 +124,6 @@ NAME_OF_YOUR_FOLDER
 | :lock: `:lock:`                               | Security                   
 | :arrow_up: `:arrow_up:`                       | Upgrading dependencies     
 | :arrow_down: `:arrow_down:`                   | Downgrading dependencies   
-| :shirt: `:shirt:`                             | Lint                       
 | :alien: `:alien:`                             | Translation                
 | :pencil: `:pencil:`                           | Text                       
 | :ambulance: `:ambulance:`                     | Critical hotfix            
@@ -133,11 +132,8 @@ NAME_OF_YOUR_FOLDER
 | :penguin: `:penguin:`                         | Fixing on Linux            
 | :checkered_flag: `:checkered_flag:`           | Fixing on Windows          
 | :construction:  `:construction:`              | Work in progress           
-| :construction_worker: `:construction_worker:` | Adding CI build system     
-| :chart_with_upwards_trend: `:chart_with_upwards_trend:` | Analytics or tracking code 
 | :heavy_minus_sign: `:heavy_minus_sign:`       | Removing a dependency      
 | :heavy_plus_sign: `:heavy_plus_sign:`         | Adding a dependency        
-| :whale: `:whale:`                             | Docker                     
 | :wrench: `:wrench:`                           | Configuration files        
 | :package: `:package:`                         | Package.json in JS         
 | :twisted_rightwards_arrows: `:twisted_rightwards_arrows:` | Merging branches           
