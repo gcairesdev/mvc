@@ -3,10 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="<?= INCLUDE_PATH_FULL ?>css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="<?= INCLUDE_PATH_FULL ?>css/bootstrap.min.css">
 	<link href="<?= INCLUDE_PATH_FULL ?>css/reset.css" rel="stylesheet" type="text/css">
 	<link href="<?= INCLUDE_PATH_FULL ?>css/style.css" rel="stylesheet" type="text/css">
-    <link rel="shortcut icon" href="<?= INCLUDE_PATH_FULL ?>img/favicon.ico" type="image/x-icon"/>
+	<link rel="shortcut icon" href="<?= INCLUDE_PATH_FULL ?>img/favicon.ico" type="image/x-icon"/>
 	<title><?= self::titulo ?></title>
 </head>
 <body>
