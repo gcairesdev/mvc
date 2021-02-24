@@ -1,4 +1,4 @@
-<?php	
+<?php
 
 	class HomeController extends Controller
 	{
@@ -8,8 +8,7 @@
 			$this->view = new MainView('home');
 		}
 
-		public function executar(){
+		public function run(){
 			$this->view->render(array('titulo'=>'Home'));
 		}
 	}
-?>

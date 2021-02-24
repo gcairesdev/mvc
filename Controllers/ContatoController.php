@@ -1,25 +1,32 @@
 <?php
 
-	class ContatoController extends Controller
-	{
+class ContatoController extends Controller
+{
 
-		public function executar(){
-			if(isset($_POST['acao'])){
-				ContatoModel::enviarFormulario();
-				echo '<script>location.href="'.INCLUDE_PATH.'contato/sucesso"</script>';
-				die();
-			}
+    public function sendForm()
+    {
+        $mail = new \Email('vps.teste.com', 'teste@teste.com', 'senha123', 'Fulano');
+        $mail->addAdress('teste@teste.com', 'Fulano');
+        $mail->formatEmail(array('assunto' => 'ESCREVA AQUI', 'corpo' => 'ESCREVA AQUI'));
+        $mail->sendEmail();
+    }
 
-			\Router::rota('contato/sucesso',function(){
-				$this->view = new MainView('contato-sucesso');
-				$this->view->render(array('titulo'=>'Contato'));
-			});
+    public function run()
+    {
+        if (isset($_POST['acao'])) {
+            $this->sendForm();
+            echo '<script>location.href="' . INCLUDE_PATH . 'contato/sucesso"</script>';
+            die();
+        }
 
-			\Router::rota('contato',function(){
-				$this->view = new MainView('contato');
-				$this->view->render(array('titulo'=>'Contato'));
-			});
-		}
-	}
+        \Router::route('contato/sucesso', function () {
+            $this->view = new MainView('contato-sucesso');
+            $this->view->render(array('titulo' => 'Contato'));
+        });
 
-?>
+        \Router::route('contato', function () {
+            $this->view = new MainView('contato');
+            $this->view->render(array('titulo' => 'Contato'));
+        });
+    }
+}

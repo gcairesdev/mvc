@@ -1,23 +1,23 @@
 <?php
-	
-	define('INCLUDE_PATH','http://localhost/mvc/');
-	define('INCLUDE_PATH_FULL','http://localhost/mvc/Views/pages/');
-	class Application
-	{
-		
-		public function executar(){
-			$url = isset($_GET['url']) ? explode('/',$_GET['url'])[0] : 'Home';
 
-			$url = ucfirst($url);
-			$url.="Controller";
-			if(file_exists('Controllers/'.$url.'.php')){
+define('INCLUDE_PATH', 'http://localhost/mvc/');
+define('INCLUDE_PATH_FULL', 'http://localhost/mvc/Views/pages/');
+class Application
+{
 
-				$controler = new $url();
-				$controler->executar();
-			}else{
-				die("Não existe esse controller!");
-			}
-		}
-	}
-	
-?>
+    public function run()
+    {
+        $url = $_GET['url'];
+        $urlFirstArg = explode('/', $url)[0];
+
+        $controller = isset($url) ? $urlFirstArg : 'Home';
+        $controller = ucfirst($controller) . 'Controller';
+
+        if (file_exists("Controllers/$controller.php")) {
+            $controler = new $controller();
+            $controler->run();
+        } else {
+            die("Página não encontrada!");
+        }
+    }
+}

@@ -1,49 +1,41 @@
 <?php
-	
-	include 'phpmailer/class.phpmailer.php';
-	include 'phpmailer/class.smtp.php';
 
-	class Email
-	{
-		
-		private $mailer;
+include 'phpmailer/class.phpmailer.php';
+include 'phpmailer/class.smtp.php';
+class Email
+{
 
-		public function __construct($host,$username,$senha,$name)
-		{
-			
-			$this->mailer = new PHPMailer;
+    private $mailer;
 
-			$this->mailer->isSMTP();                                      // Set mailer to use SMTP
-			$this->mailer->Host = $host;  				  // Specify main and backup SMTP servers
-			$this->mailer->SMTPAuth = true;                               // Enable SMTP authentication
-			$this->mailer->Username = $username;                 // SMTP username
-			$this->mailer->Password = $senha;                           // SMTP password
-			$this->mailer->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-			$this->mailer->Port = 465;                                    // TCP port to connect to
+    public function __construct($host, $username, $password, $name)
+    {
+        $this->mailer = new PHPMailer;
+        $this->mailer->isSMTP();
+        $this->mailer->Host = $host;
+        $this->mailer->SMTPAuth = true;
+        $this->mailer->Username = $username;
+        $this->mailer->Password = $password;
+        $this->mailer->SMTPSecure = 'ssl';
+        $this->mailer->Port = 465;
+        $this->mailer->isHTML(true);
+        $this->mailer->setFrom($username, $name);
+        $this->mailer->CharSet = 'UTF-8';
+    }
 
-			$this->mailer->setFrom($username,$name);
-			$this->mailer->isHTML(true);                                  // Set email format to HTML
-			$this->mailer->CharSet = 'UTF-8';
+    public function addAdress($email, $name)
+    {
+        $this->mailer->addAddress($email, $name);
+    }
 
-		}
+    public function formatEmail($email)
+    {
+        $this->mailer->Subject = $email['subject'];
+        $this->mailer->Body    = $email['body'];
+        $this->mailer->AltBody = strip_tags($email['body']);
+    }
 
-		public function addAdress($email,$nome){
-			$this->mailer->addAddress($email,$nome);
-		}
-
-		public function formatarEmail($info){
-			$this->mailer->Subject = $info['assunto'];
-			$this->mailer->Body    = $info['corpo'];
-			$this->mailer->AltBody = strip_tags($info['corpo']);
-		}
-
-		public function enviarEmail(){
-			if($this->mailer->send()){
-				return true;
-			}else{
-				return false;
-			}
-		}
-
-	}
-?>
+    public function sendEmail()
+    {
+        return $this->mailer->send();
+    }
+}

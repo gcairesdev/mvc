@@ -1,27 +1,26 @@
 <?php
 
-	class MainView
-	{
+class MainView
+{
 
-		private $fileName;
-		private $header;
-		private $footer;
+    private $fileName;
+    private $header;
+    private $footer;
 
-		const titulo = 'MVC';
-		public $menuItems = array('Home','Sobre','Contato');
+    const title = 'MVC';
+    public $menuItems = array('Home', 'Sobre', 'Contato');
 
-		public function __construct($fileName,$header = 'header',$footer = 'footer'){
-			$this->fileName = $fileName;
-			$this->header = $header;
-			$this->footer = $footer;
-		}
-		
-		public function render($arr = []){
-			include('pages/templates/'.$this->header.'.php');
-			include('pages/'.$this->fileName.'.php');
-			include('pages/templates/'.$this->footer.'.php');
-		}
+    public function __construct($fileName, $header = 'header', $footer = 'footer')
+    {
+        $this->fileName = $fileName;
+        $this->header = $header;
+        $this->footer = $footer;
+    }
 
-	}
-
-?>
+    public function render($arr = [])
+    {
+        include('pages/templates/' . $this->header . '.php');
+        include('pages/' . $this->fileName . '.php');
+        include('pages/templates/' . $this->footer . '.php');
+    }
+}
