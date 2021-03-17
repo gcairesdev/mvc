@@ -22,6 +22,8 @@
 * [Iniciando](#iniciando)
 	* [Pré requisitos](#pré-requisitos)
 	* [Instalação](#instalação)
+	* [Controllers](#controllers)
+	* [Views](#views)
 * [Contribuindo](#contribuindo)
 * [Autor](#autor)
 * [Licença](#licença)
