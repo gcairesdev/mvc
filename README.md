@@ -1,70 +1,160 @@
-# MVC Framework
-MVC Framework with bootstrap, jquery and friendly url.
+<p align="center">
+	<img src=".github/img/logo.png"></img>
+</p>
 
-## How to use
+<p align="center">
+	<a href="https://github.com/gcairesdev/mvc">
+		<img src="https://img.shields.io/github/languages/code-size/gcairesdev/mvc?color=000000&style=for-the-badge"></img>
+	</a>
+	<a href="https://github.com/gcairesdev/mvc/blob/master/LICENSE.md">
+		<img src="https://img.shields.io/github/languages/top/gcairesdev/mvc?color=000000&style=for-the-badge"></img>
+	</a>
+	<a href="https://github.com/gcairesdev/mvc">
+		<img src="https://img.shields.io/github/license/gcairesdev/mvc?color=000000&style=for-the-badge"></img>
+	</a>
+</p>
 
-1. Clone the repository
-```
+# Índice
+
+* [Sobre o projeto](#mvc)
+	* [Feito com](#feito-com)
+	* [Objetivo](#objetivo)
+* [Iniciando](#iniciando)
+	* [Pré requisitos](#pré-requisitos)
+	* [Instalação](#instalação)
+* [Contribuindo](#contribuindo)
+* [Autor](#autor)
+* [Licença](#licença)
+
+## MVC
+> Estrutura MVC para PHP com bootstrap, jquery e URL amigável
+
+Template de uma estrutura Model, View, Controller em PHP. Está incluso URL
+amigável, Bootstrap 4, jQuery e PopperJs.
+
+<p align="center">
+	<img src=".github/img/home.png"></img>
+</p>
+
+### Feito com
+* [PHP](https://php.net/)
+* [Bootstrap 4](https://getbootstrap.com/)
+* [jQuery](https://jquery.com/)
+* [PopperJs](https://popper.js.org/)
+
+### Objetivo
+
+O objetivo é facilitar a criação de projetos PHP utilizando uma estrutura
+simples, porém completa. 
+
+## Iniciando
+
+Para iniciar, veja os pré requisitos do projeto.
+
+### Pré requisitos
+* [PHP 5.6+](https://php.net/)
+* [Apache](https://www.apache.org/)
+
+### Instalação
+
+Instalação padrão de um projeto PHP.
+
+Clone o repositório em um diretório que possua virtual host:
+
+```git
 git clone https://github.com/gcairesdev/mvc
 ```
 
-2. Open the project on your local ambient
+Mude o PATH, caso altere o nome da pasta:
+
+```
+NOME_DA_PASTA
+│
+└───Application.php
+```
+
+```php
+<?php
+	
+	define('INCLUDE_PATH','http://localhost/NOME_DA_PASTA/');
+	define('INCLUDE_PATH_FULL','http://localhost/NOME_DA_PASTA/Views/pages/');
+```
+
+Com o serviço do Apache ativo, acesse a URL:
+
 ```
 http://localhost/mvc
 ```
 
-3. Create a controller
+### Controllers
+
+Crie um Controller:
+
 ```
 mvc
 │
 └───Controllers
-    │   ExampleController.php
+    │
+	└───NovoController.php
 ```
 
-4. Write this in your new controller
-```
+Adicione o código:
+
+```php
 <?php	
 
-	class ExampleController extends Controller
+	class NovoController extends Controller
 	{
 
 		public function __construct()
 		{
-			$this->view = new MainView('example');
+			$this->view = new MainView('nome-do-arquivo-da-view');
 		}
 
-		public function executar(){
-			$this->view->render(array('titulo'=>'Exemplo'));
+		public function index()
+		{
+			$this->view->render(
+				array(
+					'title' => 'Exemplo'
+				)
+			);
 		}
 	}
+
 ?>
 ```
 
-5. Create a view
+### Views
+
+Crie uma View:
+
 ```
 mvc
 │
 └───Views
-    |
-    │___pages
-        |
-        |   example.php
+    │
+	└───pages
+		│
+		└───nome-do-arquivo-da-view.php
 ```
 
-6. Write anything in your new view
-```
-<h1>Hello!</h1>
+Adicione qualquer conteúdo:
+
+```html
+<h1>Hello World!</h1>
 ```
 
-7. Adds 'Example' menu on MainView
+Adicione ao menu:
+
 ```
 mvc
 │
 └───Views
-    |
-    │   MainView.php
+    │
+	└───MainView.php
+```
 
-
+```php
 <?php
 
 	class MainView
@@ -74,80 +164,34 @@ mvc
 		private $header;
 		private $footer;
 
-		const titulo = 'MVC';
-		public $menuItems = array('Home','Sobre','Contato','Example');
+		const title = 'MVC';
+		public $menuItems = array('Home', 'Sobre', 'Contato', 'Novo');
 ```
 
-8. Change path to your project name
-```
-NAME_OF_YOUR_FOLDER
-│
-|	Application.php
+## Autor
 
+|                |                  |          |            |         |
+|----------------|------------------|----------|------------|---------|
+| ![][githubImg] | Guilherme Caires | [Github] | [Linkedin] | [Email] |
 
-<?php
-	
-	define('INCLUDE_PATH','http://localhost/NAME_OF_YOUR_FOLDER/');
-	define('INCLUDE_PATH_FULL','http://localhost/NAME_OF_YOUR_FOLDER/Views/pages/');
+## Contribuindo 
 
+Confira a página [CONTRIBUTING](./CONTRIBUTING.md) para ver os melhores locais para arquivar problemas, iniciar discussões e começar a contribuir.
 
-```
+## Licença
 
-## How to collaborate
+Lançado em 2020.
+Este projeto está sob a [Licença MIT](./LICENSE.md).
 
-### Commit
+---
 
-- Use imperative mode ("Adds feature" , "Adding feature" ou "Added feature")
-- First line must contain a maximum of 72 characters
-- Consider describing in detail in the commit body
-- Use an emoji at the beginning of commit
+<p align="center">
+    Feito com :heart: por 
+	<a href="https://github.com/gcairesdev">Guilherme Caires</a>
+</p>
 
-| Emoji                                         |   Commit type              
-|:----------------------------------------------|:---------------------------
-| :tada: `:tada:`                               | Initial commit             
-| :bookmark: `:bookmark:`                       | Version tag                
-| :sparkles: `:sparkles:`                       | New feature                
-| :bug: `:bug:`                                 | Bugfix                     
-| :card_index: `:card_index:`                   | Metadata                   
-| :books: `:books:`                             | Documentation              
-| :bulb: `:bulb:`                               | Documenting source code    
-| :racehorse: `:racehorse:`                     | Performance                
-| :lipstick: `:lipstick:`                       | Cosmetic                   
-| :rotating_light: `:rotating_light:`           | Tests                      
-| :white_check_mark: `:white_check_mark:`       | Adding a test              
-| :heavy_check_mark: `:heavy_check_mark:`       | Make a test pass           
-| :zap: `:zap:`                                 | General update             
-| :art: `:art:`                                 | Improve format/structure   
-| :hammer: `:hammer:`                           | Refactor code              
-| :fire: `:fire:`                               | Removing code/files        
-| :green_heart: `:green_heart:`                 | Continuous Integration     
-| :lock: `:lock:`                               | Security                   
-| :arrow_up: `:arrow_up:`                       | Upgrading dependencies     
-| :arrow_down: `:arrow_down:`                   | Downgrading dependencies   
-| :alien: `:alien:`                             | Translation                
-| :pencil: `:pencil:`                           | Text                       
-| :ambulance: `:ambulance:`                     | Critical hotfix            
-| :rocket: `:rocket:`                           | Deploying stuff            
-| :apple: `:apple:`                             | Fixing on MacOS            
-| :penguin: `:penguin:`                         | Fixing on Linux            
-| :checkered_flag: `:checkered_flag:`           | Fixing on Windows          
-| :construction:  `:construction:`              | Work in progress           
-| :heavy_minus_sign: `:heavy_minus_sign:`       | Removing a dependency      
-| :heavy_plus_sign: `:heavy_plus_sign:`         | Adding a dependency        
-| :wrench: `:wrench:`                           | Configuration files        
-| :package: `:package:`                         | Package.json in JS         
-| :twisted_rightwards_arrows: `:twisted_rightwards_arrows:` | Merging branches           
-| :hankey: `:hankey:`                           | Bad code / need improv.    
-| :rewind: `:rewind:`                           | Reverting changes          
-| :boom: `:boom:`                               | Breaking changes           
-| :ok_hand: `:ok_hand:`                         | Code review changes        
-| :wheelchair: `:wheelchair:`                   | Accessibility              
-| :truck: `:truck:`                             | Move/rename repository     
-
-#### Exemplo
-```bash
-git commit -m ":memo: Add contribution instructions
->
-> The CONTRIBUTING.md file was created with instructions for
-> how to make a good commit"
-``` 
+<!-- Markdown link & img dfn's -->
+[Github]: https://github.com/gcairesdev
+[GithubImg]: https://avatars.githubusercontent.com/u/54117888?s=100
+[Linkedin]: https://linkedin.com/in/guilherme-caires/
+[Email]: contatogcaires@gmail.com
