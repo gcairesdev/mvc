@@ -1,39 +1,37 @@
 <?php
+
 class Router
 {
 
     public static function route($path, $callback)
     {
-        $url = @$_GET['url'];
+        $url = isset($_GET['url']) ? $_GET['url'] : '';
 
-        if ($url == $path) {
-            $callback();
-            die();
-        }
+        if ($url == $path) return $callback();
 
         $path = explode('/', $path);
-        $url = explode('/', @$_GET['url']);
+        $url  = explode('/', $url);
 
-        $ok = true;
-        $par = [];
+        $hasParameters = true;
+        $parameters = [];
 
-        if (count($path) == count($url)) {
-
-            foreach ($path as $key => $value) {
-                if ($value == '?') {
-
-                    $par[$key] = $url[$key];
-                } else if ($url[$key] != $value) {
-
-                    $ok = false;
+        if (count($path) == count($url))
+        {
+            foreach ($path as $key => $value)
+            {
+                if ($value == '?')
+                {
+                    $parameters[$key] = $url[$key];
+                }
+                else if ($url[$key] != $value)
+                {
+                    $hasParameters = false;
                     break;
                 }
             }
 
-            if ($ok) {
-                $callback($par);
-                die();
-            }
+            if ($hasParameters) return $callback($parameters);
         }
     }
+
 }
